@@ -1,14 +1,16 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="4">
-      <div class="grid-content bg-purple">0</div>
+  <el-row :gutter="6">
+    <el-col :span="6">
+      <div class="grid-content bg-purple">嘟嘟噜</div>
     </el-col>
+
     <el-col :span="4">
-      <div class="grid-content bg-purple">0</div>
+      <div>{{currentPlayer}}</div>
     </el-col>
-    <el-col :offset="8" :span="8">
+
+    <el-col :offset="2" :span="8">
       <div class="grid-content bg-purple-light">
-        <el-select v-model="value" placeholder="人数">
+        <el-select v-model="currentPlayer" placeholder="人数">
           <el-option
             v-for="item in numOfPlayerSelectOptions"
             :key="item.value"
@@ -27,7 +29,7 @@ export default {
   data() {
     return {
       numOfPlayerSelectOptions: [],
-      value: ''
+      currentPlayer: 0
     }
   },
 
