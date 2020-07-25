@@ -10,7 +10,7 @@
 
     <el-col :offset="2" :span="8">
       <div class="grid-content bg-purple-light">
-        <el-select v-model="currentPlayer" placeholder="人数">
+        <el-select v-model="playerNum" @change="handleSelectChange" placeholder="人数">
           <el-option
             v-for="item in numOfPlayerSelectOptions"
             :key="item.value"
@@ -24,13 +24,19 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   name: '',
   data() {
     return {
       numOfPlayerSelectOptions: [],
-      currentPlayer: 0
+      playerNum: 0
     }
+  },
+
+  computed: {
+    ...mapState(['currentPlayer'])
   },
 
   mounted() {
@@ -38,6 +44,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(['changeNumberOfPlayer']),
     initPlayerSelectOptions() {
       const minPlayer = 6
       const maxPlayer = 18
@@ -51,7 +58,12 @@ export default {
         options.push(o)
       }
       this.numOfPlayerSelectOptions = options
+    },
+
+    handleSelectChange() {
+      this.changeNumberOfPlayer(this.playerNum)
     }
+
   }
 }
 </script>
