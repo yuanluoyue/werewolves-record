@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="6">
     <el-col :span="6">
-      <div class="grid-content bg-purple">嘟嘟噜</div>
+      <div class="grid-content bg-purple">当局人数</div>
     </el-col>
 
     <el-col :span="4">
