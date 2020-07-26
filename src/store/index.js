@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        currentPlayer: 1,
-        playerList: [{id:1, role:'嘟嘟噜'}]
+        currentPlayer: 0,
+        playerList: []
     },
     mutations: {
         changeNumberOfPlayer(state, numOfPlayer) {
@@ -18,7 +18,8 @@ export default new Vuex.Store({
                     const id = li.length + 1
                     const playerItem = {
                         id: id,
-                        role: '村民'
+                        role: '村民',
+                        alive: true,
                     }
                     li.push(playerItem)
                 }
@@ -31,6 +32,10 @@ export default new Vuex.Store({
 
         changePlayerRole(state, parm) {
             state.playerList[parm.index].role = parm.role
+        },
+
+        changePlayerAlive(state, parm) {
+            state.playerList[parm.index].alive = parm.role
         }
     },
 })

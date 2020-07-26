@@ -10,7 +10,6 @@
 
       <el-table-column label="角色" width="110">
         <template slot-scope="scope">
-          <!-- <span>{{scope.row.role}}</span> -->
           <el-select
             :value="scope.row.role"
             @change="handleSelectRole($event, scope.$index, scope.row)"
@@ -26,11 +25,21 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="操作">
-        <!-- <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-        </template>-->
+      <el-table-column label="存亡">
+        <template slot-scope="scope">
+          <el-select
+            :value="scope.row.alive"
+            @change="handleSelectAlive($event, scope.$index, scope.row)"
+            placeholder="存亡"
+          >
+            <el-option
+              v-for="item in playerAliveSelectOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </template>
       </el-table-column>
     </el-table>
   </div>
@@ -44,7 +53,17 @@ export default {
 
   data() {
     return {
-      playerRoleSelectOptions: []
+      playerRoleSelectOptions: [],
+      playerAliveSelectOptions: [
+        {
+          value: true,
+          label: '存活'
+        },
+        {
+          value: false,
+          label: '出局'
+        }
+      ]
     }
   },
 
@@ -57,7 +76,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['changePlayerRole']),
+    ...mapMutations(['changePlayerRole', 'changePlayerAlive']),
 
     initPlayerRoleSelectOptions() {
       const roleList = ['村民', '狼人', '预言家', '女巫', '猎人', '守卫', '白痴', '禁言长老', '丘比特', '嘟嘟噜']
@@ -78,11 +97,12 @@ export default {
       this.changePlayerRole(parm)
     },
 
-    handleEdit(index, row) {
-      console.log(index, row);
-    },
-    handleDelete(index, row) {
-      console.log(index, row);
+    handleSelectAlive(selectTarget, index) {
+      const parm = {
+        index,
+        role: selectTarget
+      }
+      this.changePlayerAlive(parm)
     }
   }
 }

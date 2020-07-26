@@ -1,26 +1,32 @@
 <template>
-  <el-row :gutter="6">
-    <el-col :span="8">
-      <div class="grid-content bg-purple">当局人数: {{currentPlayer}}</div>
-    </el-col>
+  <div class="header">
+    <h1 class="title">法官笔记</h1>
+    <el-row :gutter="6">
+      <el-col :span="8" class="desc-situation">
+        <span>参与人数: {{currentPlayer}}</span>
+        <span>存活人数: {{alivePlayer}}</span>
+      </el-col>
 
-    <el-col :span="8">
-      <div>{{'法官笔记'}}</div>
-    </el-col>
+      <el-col :span="8" class="desc-situation">
+        <span>存活狼: {{aliveWerewolves}}</span>
+        <span>存活神: {{aliveGod}}</span>
+        <span>存活民: {{aliveVillager}}</span>
+      </el-col>
 
-    <el-col :span="8">
-      <div class="grid-content bg-purple-light">
-        <el-select v-model="playerNum" @change="handleSelectChange" placeholder="人数">
-          <el-option
-            v-for="item in numOfPlayerSelectOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </div>
-    </el-col>
-  </el-row>
+      <el-col :span="8">
+        <div class="player-selecter">
+          <el-select v-model="playerNum" @change="handleSelectChange" placeholder="选择人数">
+            <el-option
+              v-for="item in numOfPlayerSelectOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -31,12 +37,39 @@ export default {
   data() {
     return {
       numOfPlayerSelectOptions: [],
-      playerNum: 0
+      playerNum: ''
     }
   },
 
   computed: {
-    ...mapState(['currentPlayer'])
+    ...mapState(['currentPlayer', 'playerList']),
+
+    alivePlayer() {
+      const list = this.playerList.filter(i => i.alive)
+      return list.length
+    },
+
+    aliveWerewolves() {
+      const list = this.playerList
+        .filter(i => i.alive)
+        .filter(i => i.role == '狼人')
+      return list.length
+    },
+
+    aliveGod() {
+      const list = this.playerList
+        .filter(i => i.alive)
+        .filter(i => i.role != '村民')
+        .filter(i => i.role != '狼人')
+      return list.length
+    },
+
+    aliveVillager() {
+      const list = this.playerList
+        .filter(i => i.alive)
+        .filter(i => i.role == '村民')
+      return list.length
+    },
   },
 
   mounted() {
@@ -70,5 +103,31 @@ export default {
 </script>
   
 <style>
+.header {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  background: rgb(217, 236, 255);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  font-size: 20px;
+}
+
+.desc-situation > span {
+  margin-bottom: 3px;
+  display: block;
+  font-size: 15px;
+  color: gray;
+}
+
+.player-selecter {
+  margin-right: 8px;
+}
 </style>
 

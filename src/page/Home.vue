@@ -6,6 +6,7 @@
     <el-main>
       <player-list />
     </el-main>
+    <p class="desc">生命不应该如此卑微，我真的有权力去裁决别人的生命吗?</p>
   </el-container>
 </template>
 
@@ -24,9 +25,17 @@ export default {
   
 <style>
 .el-header {
-  position: relative;
+  padding: 0px;
+  position: fixed;
   width: 100%;
-  height: 60px;
+  z-index: 10;
+}
+.el-main {
+  margin-top: 65px;
+}
+.desc {
+  font-size: 12px;
+  color: gray;
 }
 </style>
 
