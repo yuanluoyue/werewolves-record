@@ -1,24 +1,28 @@
-# werewolves-record
+# 法官笔记
 
-## Project setup
-```
-npm install
-```
+狼人杀法官记录器，用于记录全场玩家的阵营和存亡，附带统计功能
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+> 用于减轻法官的记忆负担和提高统计效率
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 图片预览
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 在线使用
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 开发
+
+### 用到的框架和库
+
+* 使用 Vue + vuex + element-ui
+
+### 如何运行
+
+* 需要安装 nodeJs
+* 将项目 clone 至本地，运行 npm  install 下载依赖
+* 下载完依赖后 npm run serve 即可运行本项目
+* 构建: npm run build
+
+## 需求 & bug
+
+* 可以 issue 或者留言
+
+## 支持作者

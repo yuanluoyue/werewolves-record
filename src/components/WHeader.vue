@@ -8,9 +8,9 @@
       </el-col>
 
       <el-col :span="8" class="desc-situation">
-        <span>存活狼: {{aliveWerewolves}}</span>
-        <span>存活神: {{aliveGod}}</span>
-        <span>存活民: {{aliveVillager}}</span>
+        <span :style="{color:aliveWerewolves?'gray':'red'}">存活狼: {{aliveWerewolves}}</span>
+        <span :style="{color:aliveGod?'gray':'red'}">存活神: {{aliveGod}}</span>
+        <span :style="{color:aliveVillager?'gray':'red'}">存活民: {{aliveVillager}}</span>
       </el-col>
 
       <el-col :span="8">
