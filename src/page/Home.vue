@@ -3,16 +3,21 @@
     <el-header>
       <w-header />
     </el-header>
-    <el-main>Main</el-main>
+    <el-main>
+      <player-list />
+    </el-main>
   </el-container>
 </template>
 
 <script>
 import WHeader from '../components/WHeader'
+import PlayerList from '../components/PlayerList'
+
 export default {
   name: 'HomePage',
   components: {
-    'w-header': WHeader
+    'w-header': WHeader,
+    'player-list': PlayerList
   }
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
   <el-row :gutter="6">
-    <el-col :span="6">
-      <div class="grid-content bg-purple">当局人数</div>
+    <el-col :span="8">
+      <div class="grid-content bg-purple">当局人数: {{currentPlayer}}</div>
     </el-col>
 
-    <el-col :span="4">
-      <div>{{currentPlayer}}</div>
+    <el-col :span="8">
+      <div>{{'法官笔记'}}</div>
     </el-col>
 
-    <el-col :offset="2" :span="8">
+    <el-col :span="8">
       <div class="grid-content bg-purple-light">
         <el-select v-model="playerNum" @change="handleSelectChange" placeholder="人数">
           <el-option
@@ -45,6 +45,7 @@ export default {
 
   methods: {
     ...mapMutations(['changeNumberOfPlayer']),
+
     initPlayerSelectOptions() {
       const minPlayer = 6
       const maxPlayer = 18
