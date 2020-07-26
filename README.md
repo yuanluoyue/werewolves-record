@@ -4,9 +4,16 @@
 
 > 用于减轻法官的记忆负担和提高统计效率
 
+## 在线使用
+
+* 访问以下链接可在线使用
+* http://jiankesword.gitee.io/judge-notes-online/
+
 ## 图片预览
 
-## 在线使用
+![gif 示例](./example/exp.gif)
+
+![图片](./example/exp2.png)
 
 ## 开发
 
@@ -14,7 +21,7 @@
 
 * 使用 Vue + vuex + element-ui
 
-### 如何运行
+### 如何运行工程
 
 * 需要安装 nodeJs
 * 将项目 clone 至本地，运行 npm  install 下载依赖
@@ -23,6 +30,9 @@
 
 ## 需求 & bug
 
-* 可以 issue 或者留言
+* 欢迎 issue 或者留言
 
 ## 支持作者
+
+* 鼓励和支持作者可以加速这个项目的更新
+* 想支持作者可以购买 **火鸡面** 淘口令： ￥ygZncagVzXB￥
