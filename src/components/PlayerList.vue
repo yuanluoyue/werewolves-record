@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="playerList" style="width: 100%">
+    <el-table :data="playerList" style="width: 100%" :row-class-name="tableRowClassName">
       <el-table-column label="编号">
         <template slot-scope="scope">
           <!-- <i class="el-icon-time"></i> -->
@@ -103,11 +103,18 @@ export default {
         role: selectTarget
       }
       this.changePlayerAlive(parm)
+    },
+
+    tableRowClassName({ row }) {
+      return row.alive == false ? 'not-alive' : ''
     }
   }
 }
 </script>
   
 <style>
+.el-table .not-alive {
+  background: gray;
+}
 </style>
 
