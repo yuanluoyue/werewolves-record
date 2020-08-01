@@ -36,6 +36,13 @@ export default new Vuex.Store({
 
         changePlayerAlive(state, parm) {
             state.playerList[parm.index].alive = parm.role
+        },
+
+        resetPlayerData(state) {
+            state.playerList.forEach(el => {
+                el.alive = true
+                el.role = '村民'
+            })
         }
     },
 })

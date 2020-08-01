@@ -5,6 +5,8 @@
       <el-col :span="8" class="desc-situation">
         <span>参与人数: {{currentPlayer}}</span>
         <span>存活人数: {{alivePlayer}}</span>
+        <hr />
+        <el-button @click="resetPlayerData" type="primary" icon="el-icon-delete" size="mini">重置</el-button>
       </el-col>
 
       <el-col :span="8" class="desc-situation">
@@ -77,7 +79,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['changeNumberOfPlayer']),
+    ...mapMutations(['changeNumberOfPlayer', 'resetPlayerData']),
 
     initPlayerSelectOptions() {
       const minPlayer = 6
@@ -115,7 +117,7 @@ export default {
 .title {
   margin-top: 0;
   margin-bottom: 5px;
-  padding: 0;
+  padding-top: 5px;
   font-size: 20px;
 }
 
